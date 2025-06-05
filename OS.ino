@@ -197,7 +197,7 @@ bool lastBlinkFinished() {
 
 void killBlinking() {
   digitalWrite(pin, LOW);
-  int repsRemaining = 0;
-  bool currentlyOn = false;
-  unsigned long lastBlink = 0;
+  repsRemaining = 0;
+  currentlyOn = false;
+  lastBlink = 0;
 }
