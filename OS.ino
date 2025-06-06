@@ -170,7 +170,7 @@ void trigger() {
 }
 
 void updateBlinking(int pin) {
-  if(currentlyOn || repsRemaining > 0) {
+  if(currentlyOn || repsRemaining != 0) {
     if(currentlyOn) {
       if(millis() > lastBlink + onDuration) {
         digitalWrite(pin, LOW);
@@ -197,10 +197,10 @@ void onOffSound(int on, int off, int reps) {
 }
 
 bool lastBlinkFinished() {
-  return millis() >= lastBlink + offDuration && repsRemaining == 0;
+  return millis() >= lastBlink + offDuration && repsRemaining <= 0;
 }
 
-void killBlinking() {
+void killBlinking(int pin) {
   digitalWrite(pin, LOW);
   repsRemaining = 0;
   currentlyOn = false;
